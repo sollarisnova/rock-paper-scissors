@@ -2,19 +2,26 @@ let humanScore = 0;
 let computerScore = 0;
 
 
+const rockButton = document.querySelector('#rockButton');
+const paperButton = document.querySelector('#paperButton');
+const scissorButton = document.querySelector('#scissorButton');
+
+rockButton.addEventListener('click', () => playRound('rock', getComputerChoice()));
+
+paperButton.addEventListener('click', () => playRound('paper', getComputerChoice()));
+
+scissorButton.addEventListener('click', () => playRound('scissor', getComputerChoice()));
 
 
 
-
-playGame(); 
+// this start the game playGame(); 
 
 //this function plays 5 rounds of the game and display the scores on the console
 function playGame () {
-    for (i=1; i<=5; i++) {
+
 
         playRound(getHumanChoice(), getComputerChoice());
         console.log(`Your score: ${humanScore} - Computer score: ${computerScore}`);
-    }
     
 }
 
