@@ -6,6 +6,9 @@ const rockButton = document.querySelector('#rockButton');
 const paperButton = document.querySelector('#paperButton');
 const scissorButton = document.querySelector('#scissorButton');
 
+const showResults = document.querySelector('#show-who-won');
+const score = document.querySelector('#score');
+
 rockButton.addEventListener('click', () => playRound('rock', getComputerChoice()));
 
 paperButton.addEventListener('click', () => playRound('paper', getComputerChoice()));
@@ -21,7 +24,10 @@ function playGame () {
 
 
         playRound(getHumanChoice(), getComputerChoice());
-        console.log(`Your score: ${humanScore} - Computer score: ${computerScore}`);
+        
+        showResults.textContent = `Your score: ${humanScore} - Computer score: ${computerScore}`;
+        
+        //console.log(`Your score: ${humanScore} - Computer score: ${computerScore}`);
     
 }
 
@@ -33,18 +39,22 @@ function playRound (humanchoice, computerchoice) {
         let computerSelection = computerchoice;
 
 
+
         if (humanSelection === "rock") {
             switch (computerSelection) {
                 case ("rock"):
-                    console.log("It's a tie");
+                    showResults.textContent = "It's a tie";   
+                //console.log("It's a tie");
                     break;
 
                 case  ("paper"):
-                    console.log("Sorry the computer won");
+                    showResults.textContent = "Sorry the computer won";
+                    //console.log("Sorry the computer won");
                     computerScoreAdder()
                     break;
                 case ("scissor"):
-                    console.log("You won");
+                    showResults.textContent = "You won";
+                    //console.log("You won");
                     humanScoreAdder()
                     break;
             }
@@ -54,14 +64,17 @@ function playRound (humanchoice, computerchoice) {
         else if (humanSelection === "paper") {
             switch (computerSelection) {
                 case ("rock"):
-                    console.log("You won");
+                    showResults.textContent = "You won";
+                    //console.log("You won");
                     humanScoreAdder()
                     break;
                 case ("paper"):
-                    console.log("It's a tie");
+                    showResults.textContent = "It's a tie";   
+                    //console.log("It's a tie");
                     break;
                 case ("scissor"):
-                    console.log("Sorry the computer won");
+                    showResults.textContent = "Sorry the computer won";
+                    //console.log("Sorry the computer won");
                     computerScoreAdder()
                     break;
             }
@@ -70,22 +83,35 @@ function playRound (humanchoice, computerchoice) {
         else if (humanSelection === "scissor") {
             switch (computerSelection) {
                 case ("rock"):
-                    console.log("Sorry the computer won");
+                    showResults.textContent = "Sorry the computer won";
+                    //console.log("Sorry the computer won");
                     computerScoreAdder()
                     break;
                 case ("paper"):
-                    console.log("You won");
+                    showResults.textContent = "You won";
+                    //console.log("You won");
                     humanScoreAdder()
                     break;
                 case ("scissor"):
-                    console.log("It's a tie");
+                    showResults.textContent = "It's a tie";   
+                    //console.log("It's a tie");
                     break;
             }
         }
 
         else {
-            console.log("Please enter a valid selection");
+            showResults.textContent = "Please enter a valid selection";
+            //console.log("Please enter a valid selection");
         }
+
+        score.textContent = `this is the human score ${humanScore} and this is the computer score ${computerScore}`;
+
+        const results = function() {if(humanScore >= 5) {score.textContent = 'the winner is the human'}
+            else if (computerScore >= 5) {score.textContent = 'the winner is the';}}
+
+            results()
+
+        
 
         }
         
